@@ -81,7 +81,7 @@ ORDER BY salary ASC;
 ```
 
 
-### ROLL_NO BETWEEN|IN
+### ROLL_NO BETWEEN or IN
 ```
 SELECT * FROM Students where ROLL_NO BETWEEN 10 AND 50;
 SELECT * FROM students where ROLL_NO IN (8,15,25);
