@@ -2,8 +2,8 @@
 `ctrl+shift+m` for preview in atom
 
 
-### Example, from w3schools
-From  https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
+### Example from w3schools
+From https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
 ```
 Customers : CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country
 Orders: OrderID, CustomerID, EmployeeID, OrderDate, ShipperID
@@ -12,7 +12,8 @@ Orders: OrderID, CustomerID, EmployeeID, OrderDate, ShipperID
 
 
 ```
-SELECT Country, COUNT(Country) AS C FROM (SELECT Customers.CustomerID, Customers.Country, Orders.ShipperID FROM Customers JOIN Orders ON Orders.CustomerID=Customers.CustomerID) AS temp GROUP BY Country ORDER BY C DESC;
+SELECT Country, COUNT(Country) AS C FROM (SELECT Customers.CustomerID, Customers.Country, Orders.ShipperID
+    FROM Customers JOIN Orders ON Orders.CustomerID=Customers.CustomerID) AS temp GROUP BY Country ORDER BY C DESC;
 ```
 
 
@@ -33,11 +34,13 @@ JOIN Customers
 ON Orders.CustomerID=Customers.CustomerID) AS temp GROUP BY Country,City ORDER BY Country ASC, City DESC;
 ```
 
+
 ```
 ORDER BY column1, column2, ... ASC|DESC;
 
 ORDER BY Country ASC , City DESC;
 ```
+
 
 ```
 SELECT SS, COUNT(*) as aaa FROM (SELECT Customers.CustomerID, Customers.Country AS SS
@@ -81,19 +84,17 @@ ORDER BY salary ASC;
 ### ROLL_NO BETWEEN|IN
 ```
 SELECT * FROM Students where ROLL_NO BETWEEN 10 AND 50;
-
 SELECT * FROM students where ROLL_NO IN (8,15,25);
 ```
 
 
-###
-What are the different set operators available in SQL?
+
+### What are the different set operators available in SQL?
 Some of the available set operators are – Union, Intersect or Minus operators.
 
-
-
+```
 Select DISTINCT studentID from Student
-
+```
 
 
 ### SUBSTRING
@@ -126,8 +127,7 @@ FOREIGN KEY (C_ID) REFERENCES Customers(C_ID)
 ### DELETE
 Delete duplicate data from table only first data remains constant.
 ```
-DELETE M1
-From managers M1, managers M2
+DELETE M1 From managers M1, managers M2
 Where M2.Name = M1.Name AND M1.Id>M2.Id;
 ```
 
@@ -143,7 +143,6 @@ VALUES (value1, value2, value3, ...);
 
 ### COALESCE
 Finding the name of Employees where First Name, Second Name and Last Name is given in table. Some Name is missing such as First Name, Second Name and may be Last Name. Here we will use COALESCE() function which will return first Non Null values.
-
 
 ```
 SELECT ID, COALESCE(FName, SName, LName) as Name
@@ -165,7 +164,7 @@ Between 1 and 5 Order by Hiredate desc;
 ### DATEDIFF
 Find the Employees who hired in the Last n days.
 ```
-Select *, DATEDIFF (current_date(), Hiredate) as DiffDay
+SELECT *, DATEDIFF (current_date(), Hiredate) as DiffDay
 From employees
 Where DATEDIFF (current_date(), Hiredate) between 1 and 100 order by Hiredate desc;
 ```
@@ -173,11 +172,9 @@ Where DATEDIFF (current_date(), Hiredate) between 1 and 100 order by Hiredate de
 
 ### LEFT, like, substring
 ```
-Select * From employees Where Fname like 'A%';
-
-Select * From employees Where left(FName, 1)='A';
-
-Select * From employees Where substring(FName, 1, 1)='A';
+SELECT * From employees Where Fname like 'A%';
+SELECT * From employees Where left(FName, 1)='A';
+SELECT * From employees Where substring(FName, 1, 1)='A';
 ```
 
 
@@ -185,34 +182,36 @@ Select * From employees Where substring(FName, 1, 1)='A';
 
 
 
-
-
+### SELECT INTO
+```
 SELECT * INTO newtable FROM oldtable WHERE condition;
-
-
+```
 
 
 
 ### UNION and UNION ALL
+```
 SELECT * FROM Table1
 UNION
 SELECT * FROM Table2
+```
 
 
+keeping all the duplicates:
 
-keeping all the duplictes
+```
 SELECT * FROM Table1
 UNION ALL
 SELECT * FROM Table2
+```
 
 
 
-
-##  add a column
+## ALTER - Add a column
 How to add a column ‘Salary’ to a table Employee_Details?
-
+```
 ALTER TABLE Employee_Details ADD (Salary);
-
+```
 
 
 ### List of All Tables From A DataBase
@@ -226,18 +225,15 @@ GO
 ```
 
 ### EXCEPT
-
 How to fetch values from TestTable1 that are not in TestTable2 without using NOT keyword?
-
+```
 SELECT * FROM TestTable1 EXCEPT SELECT * FROM TestTable2;
+```
 
 
 
 
-
-
-###
-What is the order of SQL SELECT?
+### What is the order of SQL SELECT?
 Order of SQL SELECT statement is as follows
 
 ```
@@ -247,19 +243,18 @@ SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY.
 
 
 
-###
-How to display the current date in SQL?
-
+### How to display the current date in SQL?
 In SQL, there is a built-in function called GetDate() which helps to return the current date.
-
+```
 SELECT GetDate();
+```
 
 
-###
-to select all the even number records from a table:
 
+### To select all the even number records from a table:
+```
 Select * from table where id % 2 = 0
-
+```
 
 
 ### CASE
@@ -280,17 +275,18 @@ end as newgender from TestTable GROUP BY Gender
 
 ### CASE
 How do you update F as M and M as F from the below table TestTable?
+```
 UPDATE TestTable SET Gender = CASE Gender WHEN 'F' THEN 'M' ELSE 'F' END
+```
 
 
 
 
 
-
-
-### matt
+### Mathematics
+```
 SELECT col1 * (col2 + IFNULL(col3,0)) FROM Table1
-
+```
 
 
 
